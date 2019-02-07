@@ -1,0 +1,17 @@
+{
+  "AcmeFile": "/path/to/traefik/acme.json",
+  "Certificates": [
+    {
+      "Domain": "mydomain.tld",
+      "KeyFile": "/path/to/target/keyfile",
+      "CertFile": "/path/to/target/certfile",
+      "RestartDocker": ["name of docker container", "another name"]
+    },
+    {
+      "Domain": "myotherdomain.tld",
+      "KeyFile": "/path/to/target/keyfile",
+      "CertFile": "/can/be/the/same/as/keyfile",
+      "RestartDocker": ["docker container"]
+    }
+  ]
+}
