@@ -21,7 +21,7 @@ The configuration has two root level elements:
 
 ### Certificates
 
-You can list as many certificates to deploy as you like. Every certifiate entry has these options:
+You can list as many certificates to deploy as you like. Every certificate entry has these options:
 
 | Variable      | Description                                                                                                |
 |---------------|------------------------------------------------------------------------------------------------------------|
