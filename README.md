@@ -5,6 +5,9 @@ This script compares the 'Not Valid After' timestamps from the deployed certific
 
 This is useful for Docker services that are also reachable via different ports, like IMAP, SMTP or IRC Bouncer.
 
+## Prerequisites
+This bash script makes use of [jq](https://stedolan.github.io/jq/).
+
 ## Installation
 Clone the repository and create a `config.json`. If you want, create a symlink for the deploy.sh for extra comfort.
 Then add the script to your crontab to execute it every night.
