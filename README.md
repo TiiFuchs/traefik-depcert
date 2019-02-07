@@ -1,7 +1,7 @@
 # traefik-depcert
 Deploys traefik certificates to other locations. For example for docker containers that serve additional ports via SSL.
 
-This script compares the NotValidBefore timestamps from the deployed certificates in your container and the one in your acme.json by traefik. If it differs the certificates get exported from traefik to your specified location and the corresponding Docker container get restarted.
+This script compares the 'Not Valid After' timestamps from the deployed certificates in your container and the one in your acme.json by traefik. If it differs the certificates get exported from traefik to your specified location and the corresponding Docker container get restarted.
 
 This is useful for Docker services that are also reachable via different ports, like IMAP, SMTP or IRC Bouncer.
 
