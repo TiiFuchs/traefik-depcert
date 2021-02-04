@@ -14,7 +14,7 @@ for row in $(jq -r '.Certificates[] | @base64' $CONFIG); do
   restartdocker=$(echo $obj | jq -r '.RestartDocker[]')
 
   # Get Certificate from acme.json
-  latest_cert=$(jq -r '.default.Certificates[] | select(.domain.main == "'$domain'").certificate' $acme_file | base64 -d | openssl x509 -noout -dates | grep notAfter)
+  latest_cert=$(jq -r '.letsencrypt.Certificates[] | select(.domain.main == "'$domain'").certificate' $acme_file | base64 -d | openssl x509 -noout -dates | grep notAfter)
   current_cert=$(openssl x509 -in $certfile -noout -dates | grep notAfter)
 
   if [[ "$latest_cert" != "$current_cert" ]]; then
@@ -22,10 +22,10 @@ for row in $(jq -r '.Certificates[] | @base64' $CONFIG); do
     echo "Deploying new certificate for '$domain'..."
     > $keyfile
     > $certfile
-    jq -r '.default.Certificates[] | select(.domain.main == "'$domain'").key' $acme_file \
+    jq -r '.letsencrypt.Certificates[] | select(.domain.main == "'$domain'").key' $acme_file \
       | base64 -d > $keyfile
 
-    jq -r '.default.Certificates[] | select(.domain.main == "'$domain'").certificate' $acme_file \
+    jq -r '.letsencrypt.Certificates[] | select(.domain.main == "'$domain'").certificate' $acme_file \
       | base64 -d >> $certfile
 
     if [[ -n $restartdocker ]]; then
